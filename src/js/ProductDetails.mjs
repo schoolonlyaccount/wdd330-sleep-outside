@@ -29,7 +29,7 @@ export default class ProductDetails {
         document.querySelector("h2").textContent = product.BrandWithoutBrand;
         document.querySelector("h3").textContent = product.Brand.Name;
 
-        const productImage = document.querySelector(".divider img");
+        const productImage = document.querySelector(".product__image");
         productImage.src = product.Image;
         productImage.alt = product.NameWithoutBrand;
 
