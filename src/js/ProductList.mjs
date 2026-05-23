@@ -23,7 +23,7 @@ export default class ProductList {
         this.renderList(list);
 
         let titleCategory;
-        switch (category) {
+        switch (this.category) {
             case "tents": titleCategory = "Tents"; break;
             case "backpacks": titleCategory = "Backpacks"; break;
             case "sleeping-bags": titleCategory = "Sleeping Bags"; break;
