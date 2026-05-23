@@ -52,5 +52,5 @@ export async function loadTemplate(path) {
 }
 export async function loadHeaderFooter() {
   renderWithTemplate(await loadTemplate("../partials/header.html"), document.getElementById("main-header"));
-  renderWithTemplate(await loadTemplate("../partials/footer.html"),document.getElementById("main-footer"));
+  renderWithTemplate(await loadTemplate("../partials/footer.html"), document.getElementById("main-footer"));
 }
