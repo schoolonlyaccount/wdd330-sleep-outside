@@ -1,3 +1,5 @@
+import { updateCartDisplayNumber } from "./ShoppingCart.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
-loadHeaderFooter();
+await loadHeaderFooter();
+updateCartDisplayNumber();

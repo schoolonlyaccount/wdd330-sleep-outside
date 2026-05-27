@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -210,6 +210,12 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+
+  border: 1px solid var(--light-grey);
+  padding-top: 2rem;
+  width: 100%;
+  margin: 0.5rem 0;
+  position: relative;
 }
 
 .cart-card__image {
@@ -239,6 +245,17 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.cart-item-removal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom: 1px solid var(--light-grey);
+  border-left: 1px solid var(--light-grey);
+  border-bottom-left-radius: 4px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 @media screen and (min-width: 500px) {
