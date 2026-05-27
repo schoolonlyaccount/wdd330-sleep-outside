@@ -1,8 +1,10 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
+import { updateCartDisplayNumber } from "./ShoppingCart.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 
 loadHeaderFooter();
+updateCartDisplayNumber();
 
 const category = getParam("category");
 
