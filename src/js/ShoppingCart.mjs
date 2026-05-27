@@ -1,4 +1,4 @@
-import { getLocalStorage, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
     return `<li class="cart-card divider">
@@ -15,7 +15,9 @@ function cartItemTemplate(item) {
 </li>`;
 }
 
-export function updateCartDisplayNumber() {
+export async function updateCartDisplayNumber() {
+    await loadHeaderFooter();
+
     const cartCount = document.querySelector(".cart-count");
     if (!cartCount) { return; }
 

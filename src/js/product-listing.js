@@ -3,7 +3,7 @@ import ProductList from "./ProductList.mjs";
 import { updateCartDisplayNumber } from "./ShoppingCart.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 
-await loadHeaderFooter();
+loadHeaderFooter();
 updateCartDisplayNumber();
 
 const category = getParam("category");
