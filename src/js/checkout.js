@@ -5,5 +5,11 @@ import { loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
 updateCartDisplayNumber();
 
-const checkout = new CheckoutProcess;
-checkout.init();
+const order = new CheckoutProcess(".checkout-summary");
+order.init();
+
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    order.checkout();
+});
