@@ -1,5 +1,5 @@
-import CheckoutProcess from "./CheckOutProcess.mjs";
-import ShoppingCart, { updateCartDisplayNumber } from "./ShoppingCart.mjs";
+import CheckoutProcess from "./CheckoutProcess.mjs";
+import { updateCartDisplayNumber } from "./ShoppingCart.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
@@ -9,7 +9,7 @@ const order = new CheckoutProcess(".checkout-summary");
 order.init();
 
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    order.checkout();
+  order.checkout();
 });
