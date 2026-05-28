@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="../js/checkout.js" type="module"></script>
   </head>
 
@@ -60,6 +60,59 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+      </section>
+
+      <section class="checkout-form">
+        <form>
+          <fieldset>
+            <legend>Customer Name</legend>
+
+            <label for="form-firstName">First Name</label>
+            <input id="form-firstName" type="text" name="firstName" autocomplete="given-name" required>
+
+            <label for="form-lastName">Last Name</label>
+            <input id="form-lastName" type="text" name="lastName" autocomplete="family-name" required>
+          </fieldset>
+
+          <fieldset>
+            <legend>Shipping & Billing Address</legend>
+
+            <label for="form-streetAddress">Street Address</label>
+            <input id="form-streetAddress" type="text" name="streetAddress" autocomplete="street-address" required>
+
+            <label for="form-city">City</label>
+            <input id="form-city" type="text" name="city" autocomplete="address-level2" required>
+
+            <label for="form-state">State</label>
+            <input id="form-state" type="text" name="state" autocomplete="address-level1" required>
+
+            <label for="form-zipCode">Zip Code</label>
+            <input id="form-zipCode" type="text" name="zipCode" autocomplete="postal-code" required>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment Information</legend>
+
+            <label for="form-cardNumber">Credit Card Number</label>
+            <input id="form-cardNumber" type="text" name="cardNumber" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" placeholder="xxxx xxxx xxxx xxxx" required>
+
+            <label for="form-cardExpiry">Expiration Date</label>
+            <input id="form-cardExpiry" type="text" name="cardExpiry" placeholder="MM/YY" autocomplete="cc-exp" required>
+
+            <label for="form-cardCVC">Security Code (CVC)</label>
+            <input id="form-cardCVC" type="text" name="cardCVC" inputmode="numeric" pattern="[0-9]{3,4}" autocomplete="cc-csc" placeholder="123" required>
+          </fieldset>
+
+          <button type="submit">Place Order</button>
+
+        </form>
+
+        <div class="order-summary">
+          <p class="subtotal">Subtotal: $</p>
+          <p class="tax">Tax: $</p>
+          <p class="shipping-estimate">Shipping Estimate: $</p>
+          <p class="total">Order Total: $</p>
+        </div>
       </section>
     </main>
 
