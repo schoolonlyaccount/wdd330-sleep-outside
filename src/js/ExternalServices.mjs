@@ -23,14 +23,19 @@ export default class ExternalServices {
     return data.Result;
   }
 
-  async checkout(payload) {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    };
-    return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
+  async searchProducts(query) {
+    // Search across all categories and filter by query
+    const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
+    const results = await Promise.all(
+      categories.map((cat) => this.getData(cat))
+    );
+    const allProducts = results.flat();
+    const q = query.toLowerCase();
+    return allProducts.filter(
+      (p) =>
+        p.Name.toLowerCase().includes(q) ||
+        p.Brand.Name.toLowerCase().includes(q) ||
+        (p.DescriptionHtmlSimple && p.DescriptionHtmlSimple.toLowerCase().includes(q))
+    );
   }
 }
