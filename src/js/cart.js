@@ -7,3 +7,4 @@ const cartElement = document.querySelector(".product-list");
 const cart = new ShoppingCart(cartElement);
 cart.init();
 cart.itemRemovalHandler();
+cart.itemQuantityHandler();

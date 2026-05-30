@@ -345,3 +345,18 @@ footer {
 .alert span:hover {
   cursor: pointer;
 }
+
+.card-qty-change {
+  position: absolute;
+  padding: 0.5rem 1rem;
+}
+
+.card-qty-up {
+  top: 34px;
+  right: 160px;
+}
+
+.card-qty-down {
+  top: 34px;
+  right: 208px;
+}

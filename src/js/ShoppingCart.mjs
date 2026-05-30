@@ -9,7 +9,9 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <button class="card-qty-change card-qty-down" data-id="${item.Id}">-</button>
   <p class="cart-card__quantity">qty: ${item.Quantity}</p>
+  <button class="card-qty-change card-qty-up" data-id="${item.Id}">+</button>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <button class="cart-item-removal" data-id="${item.Id}">X</button>
 </li>`;
@@ -93,7 +95,7 @@ export default class ShoppingCart {
     itemRemovalHandler() {
         this.listElement.addEventListener("click", (e) => {
             const button = e.target.closest(".cart-item-removal");
-            if (!button) return;
+            if (!button) { return; }
 
             const idToRemove = button.dataset.id;
 
@@ -102,6 +104,27 @@ export default class ShoppingCart {
             cart = cart.filter(item => item.Id !== idToRemove);
 
             setLocalStorage("so-cart", cart);
+
+            this.init();
+        });
+    }
+
+    itemQuantityHandler() {
+        this.listElement.addEventListener("click", (e) => {
+            const button = e.target.closest(".card-qty-change");
+            if (!button) { return; }
+
+            const idToModify = button.dataset.id;
+
+            const cartItems = ShoppingCart.getCartItems();
+            const product = cartItems.find(item => item.Id === idToModify);
+            if (button.classList.contains("card-qty-up")) {
+                product.Quantity++;
+            } else if (product.Quantity > 1) {
+                product.Quantity--;
+            }
+
+            setLocalStorage("so-cart", cartItems);
 
             this.init();
         });
