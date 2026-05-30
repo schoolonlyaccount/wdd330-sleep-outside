@@ -16,8 +16,6 @@ function cartItemTemplate(item) {
 }
 
 export async function updateCartDisplayNumber() {
-    await loadHeaderFooter();
-
     const cartCount = document.querySelector(".cart-count");
     if (!cartCount) { return; }
 
@@ -67,6 +65,11 @@ export default class ShoppingCart {
         return ShoppingCart.getCartItems().reduce((total, item) => {
             return total + item.FinalPrice * item.Quantity;
         }, 0);
+    }
+
+    static clearOutCart() {
+        setLocalStorage("so-cart", []);
+        updateCartDisplayNumber();
     }
 
     renderCart(cartItems) {

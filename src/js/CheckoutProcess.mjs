@@ -1,5 +1,6 @@
 import ShoppingCart from "./ShoppingCart.mjs";
 import ExternalServices from "./ExternalServices.mjs";
+import { alertMessage, removeAllAlerts } from "./utils.mjs";
 
 const services = new ExternalServices();
 
@@ -72,9 +73,14 @@ export default class CheckoutProcess {
 
         try {
             const response = await services.checkout(order);
+            ShoppingCart.clearOutCart();
+            location.assign("/checkout/success.html");
             console.log(response);
         } catch (err) {
-            console.log(err);
+            removeAllAlerts();
+            for (let message in err.message) {
+                alertMessage(err.message[message]);
+            }
         }
     }
 }
