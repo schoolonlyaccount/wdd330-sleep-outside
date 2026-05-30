@@ -5,7 +5,7 @@ async function convertToJson(res) {
   if (res.ok) {
     return jsonResponse;
   } else {
-    throw { name: 'servicesError', message: jsonResponse };
+    throw { name: "servicesError", message: jsonResponse };
   }
 }
 
@@ -27,20 +27,33 @@ export default class ExternalServices {
   async checkout(payload) {
     const options = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     };
     return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
   }
 
+  async login(email, password) {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    };
+    return await fetch(`${baseURL}login`, options).then(convertToJson);
+  }
+
+  async registerUser(userData) {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    };
+    return await fetch(`${baseURL}users`, options).then(convertToJson);
+  }
+
   async searchProducts(query) {
-    // Search across all categories and filter by query
     const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
-    const results = await Promise.all(
-      categories.map((cat) => this.getData(cat))
-    );
+    const results = await Promise.all(categories.map((cat) => this.getData(cat)));
     const allProducts = results.flat();
     const q = query.toLowerCase();
     return allProducts.filter(

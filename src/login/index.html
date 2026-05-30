@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Login</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/login.js" type="module"></script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider auth-main">
+      <div class="auth-card">
+        <h2>Staff Login</h2>
+        <p class="auth-subtitle">Access the order management system</p>
+        <div id="login-error" class="auth-error" style="display: none"></div>
+        <form id="login-form" class="auth-form">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="Password"
+          />
+          <button type="submit">Login</button>
+        </form>
+        <p class="auth-link">
+          Not a member? <a href="/register/index.html">Register here</a>
+        </p>
+      </div>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>
