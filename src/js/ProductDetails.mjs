@@ -1,6 +1,6 @@
 // W02
 import { updateCartDisplayNumber } from "./ShoppingCart.mjs";
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -32,6 +32,7 @@ export default class ProductDetails {
         }
         setLocalStorage("so-cart", cartItems);
         updateCartDisplayNumber();
+        alertMessage(`${this.product.NameWithoutBrand} has been added to the cart!`);
     }
 
     renderProductDetails(product) {
