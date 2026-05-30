@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { updateCartDisplayNumber } from "./ShoppingCart.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
@@ -8,7 +8,7 @@ updateCartDisplayNumber();
 
 const category = getParam("category");
 const search = getParam("search");
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 
 if (search) {

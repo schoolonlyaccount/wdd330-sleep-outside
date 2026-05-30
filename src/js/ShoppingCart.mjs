@@ -9,7 +9,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.Quantity}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <button class="cart-item-removal" data-id="${item.Id}">X</button>
 </li>`;
@@ -21,7 +21,7 @@ export async function updateCartDisplayNumber() {
     const cartCount = document.querySelector(".cart-count");
     if (!cartCount) { return; }
 
-    const count = ShoppingCart.getCartItems().length;
+    const count = ShoppingCart.getCartItems().reduce((total, item) => total + item.Quantity, 0);
 
     cartCount.textContent = count;
     Object.assign(cartCount.style, {
@@ -63,9 +63,9 @@ export default class ShoppingCart {
         return ShoppingCart.getCartItems().length === 0;
     }
 
-    getTotalPrice() {
+    static getTotalPrice() {
         return ShoppingCart.getCartItems().reduce((total, item) => {
-            return total + item.FinalPrice;
+            return total + item.FinalPrice * item.Quantity;
         }, 0);
     }
 
@@ -81,7 +81,7 @@ export default class ShoppingCart {
             cartFooter.style.display = "block";
 
             // Show total price of shopping cart
-            cartTotal.textContent = `Total: $${this.getTotalPrice().toFixed(2)}`;
+            cartTotal.textContent = `Total: $${ShoppingCart.getTotalPrice().toFixed(2)}`;
             cartTotal.style.fontSize = "1.5rem";
             cartTotal.style.textAlign = "center";
         }

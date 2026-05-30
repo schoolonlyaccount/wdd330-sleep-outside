@@ -258,6 +258,10 @@ button {
   padding: 0.5rem 1rem;
 }
 
+.cart-footer-hide a {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
